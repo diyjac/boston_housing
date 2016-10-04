@@ -12138,11 +12138,7 @@ Standard deviation of prices: $165,171.13
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> The benefit to splitting a dataset in two is so that part of it can be use for
-    training the model while the rest are used for testing and validation.  If we do not split
-    the dataset to do training, we cannot determine the ratio of true positives, false
-    positives and false negatives, and understand the performance/accuracy of the model to
-    improve it.</p>
+<p><strong>Answer: </strong> The benefit to splitting a dataset in two is so that part of it can be use for training the model while the rest are used for testing and validation.  If we do not split the dataset to do training, we cannot determine the ratio of true positives, false positives and false negatives, and understand the performance/accuracy of the model to improve it.  <strong>In particular, splitting a dataset in two allow us to estimate the performance on an independent dataset and serves as a check on overfitting.  Overfitting means that the model has trained too much that it will predict a training sample more closely than that of the overall population</strong></p>
 
 </div>
 </div>
@@ -13256,12 +13252,7 @@ AAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>  The performance of the model seems to indicate that the max_depth should be 3. At
-    max_depth = 1, the performance R^2 scores were converging low, at 3, the performance R^2
-    scores were converging at their maximum values indicating ~ 80% actuacy; however, at
-    max_depth = 6 and 10, we see that the R^2 scores are beginning to diverge, indicating that
-    what the model has learn is now over fitted with the training data and no longer works
-    accurately for the test data/general population.</p>
+<p><strong>Answer: </strong>  The performance of the model seems to indicate that the max_depth should be 3. At max_depth = 1, the performance R^2 scores were converging low, at 3, the performance R^2 scores were converging at their maximum values indicating ~ 80% actuacy; however, at max_depth = 6 and 10, we see that the R^2 scores are beginning to diverge, indicating that what the model has learn is now over fitted with the training data and cannot generalize well.</p>
 
 </div>
 </div>
@@ -13751,14 +13742,7 @@ aVUs8RljjGlV/j/X0Mrv2QiZHwAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> When at maximum depth of 1, the model suffers from high variance because it does
-    not have enough training samples and underfits the the data as can be seen by the low
-    scores on both training and validation.  At maximum depth of 10, the model suffers from
-    high bias since overfitting seems to have taken over the model.  This can be seen that
-    after maximum depth of 4, both the training and validation score have already starting to
-    diverge with the validation score at its maximum and any further maximum depth increment
-    produce no better outcome in the validation score, and may instead learn nonexistant
-    patterns in the data.</p>
+<p><strong>Answer: </strong> When at maximum depth of 1, the model suffers from high bias because it does not have enough training points and underfits the the data as can be seen by the low scores on both training and validation.  At maximum depth of 3 and 4, both the training and validation score seems to be the closest point where they are both close to converging and, at the same time, at their maximum R^2 score.  Starting at maximum depth of 5, the model starts to suffers from high variance since overfitting seems to have taken over the model as more training point have been added.  So, given the results shown, I do not believe more sample points are needed beyond maximum depth of 4.</p>
 
 </div>
 </div>
@@ -13779,12 +13763,7 @@ aVUs8RljjGlV/j/X0Mrv2QiZHwAAAABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong> I believe looking at both the previous two graphs, the maximum depth should be
-    either 3 or 4.  The first graph shows that maximum depth of 3 will give us around 80%
-    accuracy, without training and validation divergence.  Looks like going to maximum depth
-    of 4 will give us around 90% accuracy.  Going any further will not improve the scores,
-    and may over fit the data starting with at least maximum depth of 6.  I would say
-    maximum depth of 3 most likely, with 4 as a strong possibility with further training to
-    test the results.</p>
+ either 3 or 4.  The first graph shows that maximum depth of 3 will give us around 80% accuracy, without training and validation divergence.  Looks like going to maximum depth of 4 will give us around 90% accuracy.  Going any further will not improve the scores, and may over fit the data starting with at least maximum depth of 6.  I would say maximum depth of 3 most likely, with 4 as a strong possibility with further training to test the results.</p>
 
 </div>
 </div>
@@ -13840,14 +13819,37 @@ aVUs8RljjGlV/j/X0Mrv2QiZHwAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> K-fold cross-validation training technique is where you put your data into
-    "buckets" or "folds" of equal size.  Then each "bucket" is used once for validation
-    while the remaining k-1 "folds" are use for training.  This is done repeatedly, so more
-    data in the dataset are made available for training while also having unique data for
-    validation as to reduce overfitting by training against the same dataset over and over
-    again.  If we don't use K-fold cross-validation training technique, there is a chance
-    where we discover nonexisting patterns for a particular parameter to include in the model
-    when it was a case of overfit.</p>
+<p><strong>Answer: </strong> K-fold cross-validation training technique to maximize the use of your dataset for both training and testing to get the best learning results (maximum accuracy.)  Instead of normally using the train_test_split function to separate out an independent test dataset from your training dataset as a tradeoff for training versus validation, we partition the dataset into "k" bins of equal size.  In the table below, if you have k=10, and we have 200 samples, then each bin will have 20 samples:</p>
+<table>
+<thead><tr>
+<th style="text-align:center">bin 1</th>
+<th style="text-align:center">bin 2</th>
+<th style="text-align:center">bin 3</th>
+<th style="text-align:center">bin 4</th>
+<th style="text-align:center">bin 5</th>
+<th style="text-align:center">bin 6</th>
+<th style="text-align:center">bin 7</th>
+<th style="text-align:center">bin 8</th>
+<th style="text-align:center">bin 9</th>
+<th style="text-align:center">bin 10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">20</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">20</td>
+</tr>
+</tbody>
+</table>
+<p>Then we can run training k times (k-experiments), picking a separate bin as test data for that run and the rest of the k-1 bins as the training set using each run to train and test the model's performance.  The key to cross-validation is that you run the training and validation multiple times to get better results by averaging the test scores across the k-experiments.  In this particular case 10 times, since k=10.  The tradeoff here is that it takes more time to train you model, but you now can use all of your dataset for both training and testing.</p>
 
 </div>
 </div>
