@@ -13252,7 +13252,7 @@ AAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>  The performance of the model seems to indicate that the max_depth should be 3. At max_depth = 1, the performance R^2 scores were converging low, at 3, the performance R^2 scores were converging at their maximum values indicating ~ 80% actuacy; however, at max_depth = 6 and 10, we see that the R^2 scores are beginning to diverge, indicating that what the model has learn is now over fitted with the training data and cannot generalize well.</p>
+<p><strong>Answer: </strong>  The graph at the top right corner shows a max_depth of 3.  The score for the training curve are increasing as more points are added.   The testing score are getting lower as more points are added.  Adding more points beyond 400 may help to increase both the training and testing scores.  Both testing and training scores seem to be converging at ~ 80%.</p>
 
 </div>
 </div>
@@ -13742,7 +13742,7 @@ aVUs8RljjGlV/j/X0Mrv2QiZHwAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> When at maximum depth of 1, the model suffers from high bias because it does not have enough training points and underfits the the data as can be seen by the low scores on both training and validation.  At maximum depth of 3 and 4, both the training and validation score seems to be the closest point where they are both close to converging and, at the same time, at their maximum R^2 score.  Starting at maximum depth of 5, the model starts to suffers from high variance since overfitting seems to have taken over the model as more training point have been added.  So, given the results shown, I do not believe more sample points are needed beyond maximum depth of 4.</p>
+<p><strong>Answer: </strong> When at maximum depth of 1, the model suffers from high bias because it does not have enough training points and underfits the the data as can be seen by the low scores on both training and validation.  At maximum depth of 3 and 4, both the training and validation score seems to be the closest point where they are both close to converging and, at the same time, at their maximum R^2 score.  Starting at maximum depth of 5, the model starts to suffers from high variance since overfitting seems to have taken over the model as more training point have been added.  This can be seen by the training and validation scores diverging (separating farther and farther apart) as the maximum depth increases.  So, given the results shown, I do not believe more sample points are needed beyond maximum depth of 4.</p>
 
 </div>
 </div>
