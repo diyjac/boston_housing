@@ -1,5 +1,5 @@
 # Boston_housing
-Boston_housing is a *project result submission* for Udacity Boston Housing project.  It is a worksheet in **Jupyter Notebook** to evaluate the performance and predictive power of a model that has been trained and tested on data collected from homes in suburbs of Boston, Massachusetts.
+Boston_housing is a *project result submission* for Udacity Boston Housing project.  It is a worksheet in **Jupyter Notebook**, in which we will use techniques to evaluate the performance and predictive power of a machine learning model that has been trained and tested on data collected from homes in suburbs of Boston, Massachusetts.
 
 ## Installation
 
@@ -8,7 +8,6 @@ This project uses python 2.7.12.  Clone the GitHub repository and use Pip to ins
 ```
 $ git clone https://github.com/diyjac/boston_housing.git
 $ pip install jupyter
-
 ```
 
 ## Usage
